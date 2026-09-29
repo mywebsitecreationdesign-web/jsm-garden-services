@@ -304,3 +304,19 @@ footer a {
         font-size: 28px;
     }
 }
+/* Locks the screen width to prevent side-to-side scrolling */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Forces buttons to stack if they are too wide for a phone */
+.hero-buttons {
+    flex-wrap: wrap;
+}
+
+/* Stops images and videos from stretching past the screen edge */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
