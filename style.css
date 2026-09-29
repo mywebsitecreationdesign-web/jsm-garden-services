@@ -5,6 +5,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Fixes the footer floating in the middle of the page */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Home Screen: Bright background */
 body.home-page {
     background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.35)), url('garden-bg.jpeg') no-repeat center center fixed, url('garden-bg.jpg') no-repeat center center fixed;
@@ -268,9 +274,33 @@ footer {
     background-color: rgba(13, 13, 13, 0.95);
     color: #777;
     border-top: 1px solid #222;
+    margin-top: auto; /* Pushes the footer to the bottom */
 }
 
 footer a {
     color: #28a745;
     text-decoration: none;
+}
+
+/* Mobile Phone Fixes */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    nav {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero-content {
+        padding: 25px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
 }
