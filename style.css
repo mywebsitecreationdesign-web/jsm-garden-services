@@ -280,15 +280,11 @@ footer a {
         overflow-x: hidden;
     }
     
-    /* Bypasses the iOS zoom bug by completely rewriting the background without 'fixed' */
-    body.home-page {
-        background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.35)), url('garden-bg.jpeg') no-repeat center center scroll, url('garden-bg.jpg') no-repeat center center scroll;
-        background-size: cover;
-    }
-    
-    body.services-page {
-        background: linear-gradient(rgba(17, 17, 17, 0.82), rgba(17, 17, 17, 0.90)), url('garden-bg.jpeg') no-repeat center center scroll, url('garden-bg.jpg') no-repeat center center scroll;
-        background-size: cover;
+    /* Forces Apple/Mobile browsers to stop zooming the background */
+    body.home-page, body.services-page {
+        background-attachment: scroll !important;
+        background-size: cover !important;
+        background-position: center top !important;
     }
 
     header {
