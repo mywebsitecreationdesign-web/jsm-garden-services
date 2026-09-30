@@ -8,30 +8,46 @@
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    position: relative; /* Required for the background fix */
+    z-index: 0;
 }
 
-/* Base backgrounds without the word 'fixed' so iPhones scale them perfectly */
+/* Base text colors for the pages */
 body.home-page {
-    background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.35)), url('garden-bg.jpeg') no-repeat center center, url('garden-bg.jpg') no-repeat center center;
-    background-size: cover;
     color: #111111;
-    min-height: 100vh;
     line-height: 1.6;
 }
 
 body.services-page {
-    background: linear-gradient(rgba(17, 17, 17, 0.82), rgba(17, 17, 17, 0.90)), url('garden-bg.jpeg') no-repeat center center, url('garden-bg.jpg') no-repeat center center;
-    background-size: cover;
     color: #ffffff;
-    min-height: 100vh;
     line-height: 1.6;
 }
 
-/* This securely hands the 'fixed' background effect ONLY to desktop monitors */
-@media (min-width: 769px) {
-    body.home-page, body.services-page {
-        background-attachment: fixed;
-    }
+/* 
+  BULLETPROOF IOS BACKGROUND FIX
+  Creates a locked, screen-sized layer behind the website so the background cannot stretch 
+*/
+body.home-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.35)), url('garden-bg.jpeg') center center / cover no-repeat, url('garden-bg.jpg') center center / cover no-repeat;
+    z-index: -1;
+}
+
+body.services-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(17, 17, 17, 0.82), rgba(17, 17, 17, 0.90)), url('garden-bg.jpeg') center center / cover no-repeat, url('garden-bg.jpg') center center / cover no-repeat;
+    z-index: -1;
 }
 
 header {
@@ -287,7 +303,6 @@ footer a {
         max-width: 100vw;
         overflow-x: hidden;
     }
-
     header {
         flex-direction: column;
         padding: 15px;
